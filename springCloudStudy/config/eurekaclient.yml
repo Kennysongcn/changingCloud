@@ -4,10 +4,11 @@ spring:
   application:
     name: eurekaclient
   rabbitmq:
-    host: localhost
-    port: 15672
-    username: kennysong
-    password: 165918
+     port: 5672
+     username: guest
+     password: guest
+     virtualHost: /
+     publisherConfirms: true
 management:
   endpoints:
     web:
