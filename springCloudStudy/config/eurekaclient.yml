@@ -1,18 +1,15 @@
 server:
-  port: 8763
+  port: 8764
 spring:
   application:
     name: eurekaclient
+  rabbitmq:
+    host: localhost
+    port: 15672
+    username: kennysong
+    password: 165918
 management:
-    endpoints:
-        web:
-            exposure:
-                include: refresh,health,info,bus-refresh
-spring:
-    rabbitmq:
-        host: 127.0.0.1
-        port: 5672
-        username: guest
-        password: guest
-        virtualHost: /
-        publisherConfirms: true
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info,bus-refresh
