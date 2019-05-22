@@ -6,4 +6,4 @@ spring:
     name: index
   profiles:
     active: dev
-name: 69
+name: 6
