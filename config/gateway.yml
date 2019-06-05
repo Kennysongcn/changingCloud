@@ -10,6 +10,19 @@ spring:
           enabled: true #表示是否与服务发现组件（register）进行结合，通过 serviceId（必须设置成大写）转发到具体的服务实例。
                         #默认为 false，设为 true 便开启通过服务中心的自动根据 serviceId 创建路由的功能。
                         #路由访问方式：http://Gateway_HOST:Gateway_PORT/ 大写的 serviceId/**，其中微服务应用名默认大写访问
+#redis配置
+  redis:
+    host: localhost
+    port: 6379
+    password: 
+    database: 1
+    timeout: 60s
+    jedis:
+      pool:
+        max-active: -1
+        max-idle: 15
+        max-wait: -1s
+        min-idle: 5
  
 #      - id: ORDER-SERVICE           #网关路由到订单服务order-service
 #        uri: lb://ORDER-SERVICE
@@ -25,5 +38,22 @@ logging:
     org.springframework.http.server.reactive: debug
     org.springframework.web.reactive: debug
     reactor.ipc.netty: debug
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8001/eureka/,http://127.0.0.1:8002/eureka/
 
-    
+#jwt生成密钥
+jwt:
+  secret:
+    key:  asdfghjkl
+
+#token黑名单 存储key
+  blacklist:
+    key:
+      format: JWT_BLACKLIST::%s
+
+#不进行token拦截
+auth:
+  skip: 
+    urls: /USER/auth,/USER/token/refresh
